@@ -16,6 +16,10 @@
 		BE3CBF7F286F2FEF006A8912 /* MVVMDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBF7E286F2FEF006A8912 /* MVVMDemoTests.swift */; };
 		BE3CBF89286F2FEF006A8912 /* MVVMDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBF88286F2FEF006A8912 /* MVVMDemoUITests.swift */; };
 		BE3CBF8B286F2FEF006A8912 /* MVVMDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBF8A286F2FEF006A8912 /* MVVMDemoUITestsLaunchTests.swift */; };
+		BE3CBF9A286F30AD006A8912 /* MyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBF99286F30AD006A8912 /* MyHomeViewController.swift */; };
+		BE3CBF9F286F3700006A8912 /* HomeViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBF9E286F3700006A8912 /* HomeViewControllerCell.swift */; };
+		BE3CBFA3286F3BF3006A8912 /* NetworkStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBFA2286F3BF3006A8912 /* NetworkStruct.swift */; };
+		BE3CBFA9286F4406006A8912 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBFA8286F4406006A8912 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		BE3CBF84286F2FEF006A8912 /* MVVMDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3CBF88286F2FEF006A8912 /* MVVMDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMDemoUITests.swift; sourceTree = "<group>"; };
 		BE3CBF8A286F2FEF006A8912 /* MVVMDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BE3CBF99286F30AD006A8912 /* MyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeViewController.swift; sourceTree = "<group>"; };
+		BE3CBF9E286F3700006A8912 /* HomeViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerCell.swift; sourceTree = "<group>"; };
+		BE3CBFA2286F3BF3006A8912 /* NetworkStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStruct.swift; sourceTree = "<group>"; };
+		BE3CBFA8286F4406006A8912 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,10 @@
 		BE3CBF66286F2FED006A8912 /* MVVMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BE3CBFA0286F3BC2006A8912 /* Model */,
+				BE3CBF9C286F36D4006A8912 /* ViewModel */,
+				BE3CBF9B286F36CD006A8912 /* View */,
+				BE3CBF97286F307F006A8912 /* ViewController */,
 				BE3CBF67286F2FED006A8912 /* AppDelegate.swift */,
 				BE3CBF69286F2FED006A8912 /* SceneDelegate.swift */,
 				BE3CBF6B286F2FED006A8912 /* ViewController.swift */,
@@ -125,6 +137,70 @@
 				BE3CBF8A286F2FEF006A8912 /* MVVMDemoUITestsLaunchTests.swift */,
 			);
 			path = MVVMDemoUITests;
+			sourceTree = "<group>";
+		};
+		BE3CBF97286F307F006A8912 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBF98286F308B006A8912 /* MyHomeViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BE3CBF98286F308B006A8912 /* MyHomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBF99286F30AD006A8912 /* MyHomeViewController.swift */,
+			);
+			path = MyHomeViewController;
+			sourceTree = "<group>";
+		};
+		BE3CBF9B286F36CD006A8912 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBF9D286F36E0006A8912 /* HomeViewControllerCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BE3CBF9C286F36D4006A8912 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBFA7286F43EB006A8912 /* HomeViewModel */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BE3CBF9D286F36E0006A8912 /* HomeViewControllerCell */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBF9E286F3700006A8912 /* HomeViewControllerCell.swift */,
+			);
+			path = HomeViewControllerCell;
+			sourceTree = "<group>";
+		};
+		BE3CBFA0286F3BC2006A8912 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBFA1286F3BCB006A8912 /* NetworkStruct */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BE3CBFA1286F3BCB006A8912 /* NetworkStruct */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBFA2286F3BF3006A8912 /* NetworkStruct.swift */,
+			);
+			path = NetworkStruct;
+			sourceTree = "<group>";
+		};
+		BE3CBFA7286F43EB006A8912 /* HomeViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE3CBFA8286F4406006A8912 /* HomeViewModel.swift */,
+			);
+			path = HomeViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +336,11 @@
 			files = (
 				BE3CBF6C286F2FED006A8912 /* ViewController.swift in Sources */,
 				BE3CBF68286F2FED006A8912 /* AppDelegate.swift in Sources */,
+				BE3CBFA9286F4406006A8912 /* HomeViewModel.swift in Sources */,
 				BE3CBF6A286F2FED006A8912 /* SceneDelegate.swift in Sources */,
+				BE3CBF9A286F30AD006A8912 /* MyHomeViewController.swift in Sources */,
+				BE3CBF9F286F3700006A8912 /* HomeViewControllerCell.swift in Sources */,
+				BE3CBFA3286F3BF3006A8912 /* NetworkStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
