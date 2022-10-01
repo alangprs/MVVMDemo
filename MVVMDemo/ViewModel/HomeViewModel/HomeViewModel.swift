@@ -6,36 +6,53 @@
 //
 
 import Foundation
-
-protocol HomeViewModelDelegate: AnyObject {
-    /// 通知刷新tableView
-    func reloadTableViewData()
-}
+import Combine
 
 class HomeViewMode {
     
-    weak var delegate: HomeViewModelDelegate?
-        
-    private var travelData: [Info] = {
+    private lazy var travelData: [Info] = {
         let travelData = [Info]()
         return travelData
     }()
     
+    /// 資料發布者
+    private var traveDataSubject = PassthroughSubject<[Info], Never>()
+    private var anyCancellable = Set<AnyCancellable>()
+    
     /// 取得model層拿到的資料
-    func getDate() -> [Info] {
+    func getData() -> [Info] {
+        
+        traveDataSubject.sink(receiveCompletion: { result in
+            
+            switch result {
+                
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+            
+        }, receiveValue: { value in
+            self.travelData = value
+        }).store(in: &anyCancellable)
+        
         return travelData
+        
     }
     
     /// 打api取得網路資料
-    func getNetworkData() {
+    func getNetworkData(completion: @escaping (() -> Void)) {
         let urlStr = "https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json"
         if let url = URL(string: urlStr) {
             URLSession.shared.dataTask(with: url) { data, respond, error in
                 if let data = data {
                     do {
                         let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
+                        
                         self.travelData = searchResponse.xmlHead.infos.info
-                        self.delegate?.reloadTableViewData()
+                        self.traveDataSubject
+                            .send(self.travelData)
+                        completion()
                     } catch  {
                         print(error)
                     }
