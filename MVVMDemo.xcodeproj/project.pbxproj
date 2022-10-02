@@ -23,6 +23,7 @@
 		BE3CBF9F286F3700006A8912 /* HomeViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBF9E286F3700006A8912 /* HomeViewControllerCell.swift */; };
 		BE3CBFA3286F3BF3006A8912 /* NetworkStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBFA2286F3BF3006A8912 /* NetworkStruct.swift */; };
 		BE3CBFA9286F4406006A8912 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3CBFA8286F4406006A8912 /* HomeViewModel.swift */; };
+		BEEF4FD428E9AEFB004B22BF /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FD328E9AEFB004B22BF /* AlamofireAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		BE3CBF9E286F3700006A8912 /* HomeViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerCell.swift; sourceTree = "<group>"; };
 		BE3CBFA2286F3BF3006A8912 /* NetworkStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStruct.swift; sourceTree = "<group>"; };
 		BE3CBFA8286F4406006A8912 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BEEF4FD328E9AEFB004B22BF /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		C8CE58E6F633825F5937B59F /* Pods_MVVMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F4A1CF37C1D511979EED71 /* Pods_MVVMDemo_MVVMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo_MVVMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 		BE3CBF66286F2FED006A8912 /* MVVMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF4FD228E9AEC5004B22BF /* Adapters */,
 				BE3CBFA0286F3BC2006A8912 /* Model */,
 				BE3CBF9C286F36D4006A8912 /* ViewModel */,
 				BE3CBF9B286F36CD006A8912 /* View */,
@@ -220,6 +223,14 @@
 			path = HomeViewModel;
 			sourceTree = "<group>";
 		};
+		BEEF4FD228E9AEC5004B22BF /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				BEEF4FD328E9AEFB004B22BF /* AlamofireAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
 		BFA3810D200CA45822C44DE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +251,6 @@
 				AC6AFCD6052DAC7BF2AF005B /* Pods-MVVMDemoTests.debug.xcconfig */,
 				2D72E24FC2346512A1F86BA9 /* Pods-MVVMDemoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -487,6 +497,7 @@
 				BE3CBF68286F2FED006A8912 /* AppDelegate.swift in Sources */,
 				BE3CBFA9286F4406006A8912 /* HomeViewModel.swift in Sources */,
 				BE3CBF6A286F2FED006A8912 /* SceneDelegate.swift in Sources */,
+				BEEF4FD428E9AEFB004B22BF /* AlamofireAdapter.swift in Sources */,
 				BE3CBF9A286F30AD006A8912 /* MyHomeViewController.swift in Sources */,
 				BE3CBF9F286F3700006A8912 /* HomeViewControllerCell.swift in Sources */,
 				BE3CBFA3286F3BF3006A8912 /* NetworkStruct.swift in Sources */,

@@ -50,11 +50,11 @@ class MyHomeViewController: UIViewController {
     
     /// 打api取得資料
     func getNetworkData() {
-        homeViewModel.getNetworkData(completion: {
+        homeViewModel.getTravelData {
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
-        })
+        }
     }
     
     // MARK: - constraint
