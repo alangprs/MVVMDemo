@@ -18,7 +18,6 @@ class MyHomeViewController: UIViewController {
     /// 取得ViewModel
     private lazy var homeViewModel: HomeViewMode = {
        let homeViewModel = HomeViewMode()
-        homeViewModel.delegate = self
         return homeViewModel
     }()
 
@@ -34,8 +33,10 @@ class MyHomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        homeViewModel.getNetworkData()
+        getNetworkData()
     }
+    
+    // MARK: - set
     
     /// 設定tableView
     private func setupTableView() {
@@ -44,6 +45,19 @@ class MyHomeViewController: UIViewController {
         myTableView.register(HomeViewControllerCell.self, forCellReuseIdentifier: "\(HomeViewControllerCell.self)")
         settingTableViewConsraint()
     }
+    
+    // MARK: - other func
+    
+    /// 打api取得資料
+    func getNetworkData() {
+        homeViewModel.getTravelData {
+            DispatchQueue.main.async {
+                self.myTableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - constraint
     
     /// 設定TableView 位置
     private func settingTableViewConsraint() {
@@ -63,7 +77,7 @@ extension MyHomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return homeViewModel.getDate().count
+        return homeViewModel.getData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,23 +88,11 @@ extension MyHomeViewController: UITableViewDataSource {
         }
         
         // 取得indexPath的資料
-        if let item = homeViewModel.getDate()[indexPath.row].name {
+        
+        if let item = homeViewModel.getData()[indexPath.row].name {
             cell.myConvert(text: item)
         }
         
         return cell
     }
-}
-
-// MARK: - HomeViewModelDelegate
-
-extension MyHomeViewController: HomeViewModelDelegate {
-    func reloadTableViewData() {
-        
-        DispatchQueue.main.async {
-            self.myTableView.reloadData()
-        }
-    }
-    
-    
 }
