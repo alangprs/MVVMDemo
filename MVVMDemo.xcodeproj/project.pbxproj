@@ -27,6 +27,13 @@
 		BEEF4FD728EB15BC004B22BF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FD628EB15BC004B22BF /* Utils.swift */; };
 		BEEF4FDB28EB181E004B22BF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FDA28EB181E004B22BF /* DateExtension.swift */; };
 		BEEF4FDD28EB1BF9004B22BF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FDC28EB1BF9004B22BF /* StringExtension.swift */; };
+		BEEF4FE028EB264A004B22BF /* Int_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FDF28EB264A004B22BF /* Int_Extension.swift */; };
+		BEEF4FE228EB29EF004B22BF /* Decimal_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FE128EB29EF004B22BF /* Decimal_Extension.swift */; };
+		BEEF4FE428EB307B004B22BF /* Double_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FE328EB307B004B22BF /* Double_Extension.swift */; };
+		BEEF4FE628EB32CE004B22BF /* UILabel_Extexsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FE528EB32CE004B22BF /* UILabel_Extexsion.swift */; };
+		BEEF4FE828EB33C3004B22BF /* UIImage_Extexsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FE728EB33C3004B22BF /* UIImage_Extexsion.swift */; };
+		BEEF4FEA28EB3459004B22BF /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FE928EB3459004B22BF /* UIView_Extension.swift */; };
+		BEEF4FEC28EB368B004B22BF /* UITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF4FEB28EB368B004B22BF /* UITableView_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +82,13 @@
 		BEEF4FD628EB15BC004B22BF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BEEF4FDA28EB181E004B22BF /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		BEEF4FDC28EB1BF9004B22BF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		BEEF4FDF28EB264A004B22BF /* Int_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Extension.swift; sourceTree = "<group>"; };
+		BEEF4FE128EB29EF004B22BF /* Decimal_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal_Extension.swift; sourceTree = "<group>"; };
+		BEEF4FE328EB307B004B22BF /* Double_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double_Extension.swift; sourceTree = "<group>"; };
+		BEEF4FE528EB32CE004B22BF /* UILabel_Extexsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel_Extexsion.swift; sourceTree = "<group>"; };
+		BEEF4FE728EB33C3004B22BF /* UIImage_Extexsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extexsion.swift; sourceTree = "<group>"; };
+		BEEF4FE928EB3459004B22BF /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
+		BEEF4FEB28EB368B004B22BF /* UITableView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Extension.swift; sourceTree = "<group>"; };
 		C8CE58E6F633825F5937B59F /* Pods_MVVMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F4A1CF37C1D511979EED71 /* Pods_MVVMDemo_MVVMDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemo_MVVMDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -250,10 +264,25 @@
 		BEEF4FD828EB17B3004B22BF /* extension擴充相關 */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF4FDE28EB262E004B22BF /* UIKitExtension */,
 				BEEF4FDA28EB181E004B22BF /* DateExtension.swift */,
 				BEEF4FDC28EB1BF9004B22BF /* StringExtension.swift */,
+				BEEF4FDF28EB264A004B22BF /* Int_Extension.swift */,
+				BEEF4FE128EB29EF004B22BF /* Decimal_Extension.swift */,
+				BEEF4FE328EB307B004B22BF /* Double_Extension.swift */,
 			);
 			path = "extension擴充相關";
+			sourceTree = "<group>";
+		};
+		BEEF4FDE28EB262E004B22BF /* UIKitExtension */ = {
+			isa = PBXGroup;
+			children = (
+				BEEF4FE528EB32CE004B22BF /* UILabel_Extexsion.swift */,
+				BEEF4FE728EB33C3004B22BF /* UIImage_Extexsion.swift */,
+				BEEF4FE928EB3459004B22BF /* UIView_Extension.swift */,
+				BEEF4FEB28EB368B004B22BF /* UITableView_Extension.swift */,
+			);
+			path = UIKitExtension;
 			sourceTree = "<group>";
 		};
 		BFA3810D200CA45822C44DE7 /* Frameworks */ = {
@@ -520,14 +549,21 @@
 			files = (
 				BE3CBF6C286F2FED006A8912 /* ViewController.swift in Sources */,
 				BEEF4FDB28EB181E004B22BF /* DateExtension.swift in Sources */,
+				BEEF4FE228EB29EF004B22BF /* Decimal_Extension.swift in Sources */,
 				BE3CBF68286F2FED006A8912 /* AppDelegate.swift in Sources */,
 				BEEF4FD728EB15BC004B22BF /* Utils.swift in Sources */,
 				BE3CBFA9286F4406006A8912 /* HomeViewModel.swift in Sources */,
+				BEEF4FE028EB264A004B22BF /* Int_Extension.swift in Sources */,
+				BEEF4FE628EB32CE004B22BF /* UILabel_Extexsion.swift in Sources */,
 				BE3CBF6A286F2FED006A8912 /* SceneDelegate.swift in Sources */,
+				BEEF4FEC28EB368B004B22BF /* UITableView_Extension.swift in Sources */,
+				BEEF4FE828EB33C3004B22BF /* UIImage_Extexsion.swift in Sources */,
 				BEEF4FD428E9AEFB004B22BF /* AlamofireAdapter.swift in Sources */,
 				BE3CBF9A286F30AD006A8912 /* MyHomeViewController.swift in Sources */,
 				BE3CBF9F286F3700006A8912 /* HomeViewControllerCell.swift in Sources */,
 				BEEF4FDD28EB1BF9004B22BF /* StringExtension.swift in Sources */,
+				BEEF4FEA28EB3459004B22BF /* UIView_Extension.swift in Sources */,
+				BEEF4FE428EB307B004B22BF /* Double_Extension.swift in Sources */,
 				BE3CBFA3286F3BF3006A8912 /* NetworkStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
