@@ -77,21 +77,20 @@ extension MyHomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return homeViewModel.getData().count
+        return homeViewModel.travelDateCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = myTableView.dequeueReusableCell(withIdentifier: "\(HomeViewControllerCell.self)", for: indexPath) as? HomeViewControllerCell else {
+        guard let cell = myTableView.dequeueReusableCell(withIdentifier: "\(HomeViewControllerCell.self)", for: indexPath) as? HomeViewControllerCell,
+              let item = homeViewModel.getData(indexPath: indexPath),
+              let name = item.name else {
             print("get myTableView fail")
             return UITableViewCell()
         }
         
         // 取得indexPath的資料
-        
-        if let item = homeViewModel.getData()[indexPath.row].name {
-            cell.myConvert(text: item)
-        }
+        cell.myConvert(text: name)
         
         return cell
     }
