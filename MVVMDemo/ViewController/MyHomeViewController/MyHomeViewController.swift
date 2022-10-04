@@ -60,9 +60,27 @@ class MyHomeViewController: UIViewController {
     
     /// 打api取得資料
     func getNetworkData() {
-        homeViewModel.getTravelData {
-            DispatchQueue.main.async {
-                self.myTableView.reloadData()
+        
+        // alamofire打api方式
+//        homeViewModel.getTravelData {
+//            DispatchQueue.main.async {
+//                self.myTableView.reloadData()
+//            }
+//        }
+        
+        
+        // 原生打api方式
+        homeViewModel.getNetworkData { result in
+            
+            switch result {
+                
+            case .success(_):
+                DispatchQueue.main.async {
+                    self.myTableView.reloadData()
+                }
+            case .failure(_):
+                // TODO: 處理error
+                print("處理error")
             }
         }
     }
