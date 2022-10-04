@@ -11,7 +11,7 @@ import Alamofire
 class HomeViewMode {
     
     private lazy var travelData: [Info] = {
-        let travelData = [Info]()
+        var travelData = [Info]()
         return travelData
     }()
     
@@ -23,25 +23,19 @@ class HomeViewMode {
     private var traveDataSubject = PassthroughSubject<[Info], Never>()
     private var anyCancellable = Set<AnyCancellable>()
     
+    // MARK: - 外部呼叫參數
+    
+    /// 取得data數量
+    lazy var travelDateCount: Int = {
+        return Int()
+    }()
+    
+    
+    // MARK: - 外部呼叫
+    
     /// 取得model層拿到的資料
-    func getData() -> [Info] {
-        
-        traveDataSubject.sink(receiveCompletion: { result in
-            
-            switch result {
-                
-            case .finished:
-                print("finished")
-            case .failure(let error):
-                print(error)
-            }
-            
-        }, receiveValue: { value in
-            self.travelData = value
-        }).store(in: &anyCancellable)
-        
-        return travelData
-        
+    func getData(indexPath: IndexPath) -> Info? {
+        return travelData[indexPath.item]
     }
     
     /// alamofire 打 api 方式
@@ -54,8 +48,7 @@ class HomeViewMode {
                 do {
                     let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                     self.travelData = searchResponse.xmlHead.infos.info
-                    self.traveDataSubject
-                        .send(self.travelData)
+                    self.travelDateCount = self.travelData.count
                     completion()
                     
                 } catch {
