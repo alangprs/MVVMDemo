@@ -6,7 +6,8 @@
 //
 
 import Combine
-import Alamofire
+import Foundation
+//import Alamofire
 
 class HomeViewMode {
     
@@ -18,10 +19,6 @@ class HomeViewMode {
     private lazy var alamofireAdapter: AlamofireAdapter = {
        return AlamofireAdapter()
     }()
-    
-    /// 資料發布者
-    private var traveDataSubject = PassthroughSubject<[Info], Never>()
-    private var anyCancellable = Set<AnyCancellable>()
     
     // MARK: - 外部呼叫參數
     
@@ -41,16 +38,16 @@ class HomeViewMode {
     /// alamofire 打 api 方式
     func getTravelData(completion: @escaping (() -> Void)) {
         let urlStr = "https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json"
-        
+
         alamofireAdapter.getNetwork(url: urlStr) { data, respond, error in
-            
+
             if let data = data {
                 do {
                     let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                     self.travelData = searchResponse.xmlHead.infos.info
                     self.travelDateCount = self.travelData.count
                     completion()
-                    
+
                 } catch {
                     print("json decoder error\(error.localizedDescription)")
                 }
@@ -61,7 +58,7 @@ class HomeViewMode {
     }
     
     /// 原生打api方式
-    func getNetworkData(completion: @escaping (() -> Void)) {
+    func getNetworkData(completion: @escaping ((Result<[Info],Error>) -> Void)) {
         let urlStr = "https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json"
         if let url = URL(string: urlStr) {
             URLSession.shared.dataTask(with: url) { data, respond, error in
@@ -70,14 +67,14 @@ class HomeViewMode {
                         let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                         
                         self.travelData = searchResponse.xmlHead.infos.info
-                        self.traveDataSubject
-                            .send(self.travelData)
-                        completion()
+                        self.travelDateCount = self.travelData.count
+                        
+                        completion(.success(self.travelData))
                     } catch  {
-                        print(error)
+                        completion(.failure(error))
                     }
                 } else {
-                    print("get networkData error", error as Any)
+                    print("get networkData data error", error as Any)
                 }
                 
             }.resume()
