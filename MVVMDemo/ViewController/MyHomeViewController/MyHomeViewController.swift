@@ -27,6 +27,7 @@ class MyHomeViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+        setComboTravel()
         
     }
     
@@ -44,6 +45,15 @@ class MyHomeViewController: UIViewController {
         
         myTableView.register(HomeViewControllerCell.self, forCellReuseIdentifier: "\(HomeViewControllerCell.self)")
         settingTableViewConsraint()
+    }
+    
+    /// 設定國外套裝
+    func setComboTravel() {
+        let builder = TravelBuilder()
+        let packing = builder.makeInbound()
+        let coust = packing.getTravelPackingsCost()
+        packing.showAllTravelPackings()
+        print("套裝總價: \(coust)")
     }
     
     // MARK: - other func
