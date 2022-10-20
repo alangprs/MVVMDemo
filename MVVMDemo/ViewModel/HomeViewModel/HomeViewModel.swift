@@ -6,12 +6,13 @@
 //
 
 import Combine
-import Alamofire
+import Foundation
+//import Alamofire
 
 class HomeViewMode {
     
     private lazy var travelData: [Info] = {
-        let travelData = [Info]()
+        var travelData = [Info]()
         return travelData
     }()
     
@@ -19,45 +20,34 @@ class HomeViewMode {
        return AlamofireAdapter()
     }()
     
-    /// 資料發布者
-    private var traveDataSubject = PassthroughSubject<[Info], Never>()
-    private var anyCancellable = Set<AnyCancellable>()
+    // MARK: - 外部呼叫參數
+    
+    /// 取得data數量
+    lazy var travelDateCount: Int = {
+        return Int()
+    }()
+    
+    
+    // MARK: - 外部呼叫
     
     /// 取得model層拿到的資料
-    func getData() -> [Info] {
-        
-        traveDataSubject.sink(receiveCompletion: { result in
-            
-            switch result {
-                
-            case .finished:
-                print("finished")
-            case .failure(let error):
-                print(error)
-            }
-            
-        }, receiveValue: { value in
-            self.travelData = value
-        }).store(in: &anyCancellable)
-        
-        return travelData
-        
+    func getData(indexPath: IndexPath) -> Info? {
+        return travelData[indexPath.item]
     }
     
     /// alamofire 打 api 方式
     func getTravelData(completion: @escaping (() -> Void)) {
         let urlStr = "https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json"
-        
+
         alamofireAdapter.getNetwork(url: urlStr) { data, respond, error in
-            
+
             if let data = data {
                 do {
                     let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                     self.travelData = searchResponse.xmlHead.infos.info
-                    self.traveDataSubject
-                        .send(self.travelData)
+                    self.travelDateCount = self.travelData.count
                     completion()
-                    
+
                 } catch {
                     print("json decoder error\(error.localizedDescription)")
                 }
@@ -68,7 +58,7 @@ class HomeViewMode {
     }
     
     /// 原生打api方式
-    func getNetworkData(completion: @escaping (() -> Void)) {
+    func getNetworkData(completion: @escaping ((Result<[Info],Error>) -> Void)) {
         let urlStr = "https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json"
         if let url = URL(string: urlStr) {
             URLSession.shared.dataTask(with: url) { data, respond, error in
@@ -77,14 +67,14 @@ class HomeViewMode {
                         let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                         
                         self.travelData = searchResponse.xmlHead.infos.info
-                        self.traveDataSubject
-                            .send(self.travelData)
-                        completion()
+                        self.travelDateCount = self.travelData.count
+                        
+                        completion(.success(self.travelData))
                     } catch  {
-                        print(error)
+                        completion(.failure(error))
                     }
                 } else {
-                    print("get networkData error", error as Any)
+                    print("get networkData data error", error as Any)
                 }
                 
             }.resume()
