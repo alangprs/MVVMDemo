@@ -10,6 +10,7 @@ target 'MVVMDemo' do
 source 'https://github.com/CocoaPods/Specs.git'
 
  pod 'Alamofire'
+ pod 'SnapKit'
 
   target 'MVVMDemoTests' do
     inherit! :search_paths
